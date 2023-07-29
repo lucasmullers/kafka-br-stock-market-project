@@ -1,0 +1,1 @@
+SELECT * FROM br_stock_trades EMIT CHANGES LIMIT 2;

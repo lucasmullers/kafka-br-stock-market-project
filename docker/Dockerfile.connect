@@ -1,0 +1,4 @@
+FROM confluentinc/cp-kafka-connect:7.3.0
+
+RUN confluent-hub install --no-prompt confluentinc/kafka-connect-s3:latest && \
+    confluent-hub install --no-prompt confluentinc/kafka-connect-datagen:latest
