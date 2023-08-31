@@ -3,7 +3,6 @@ from time import sleep
 from pandas import read_csv
 from confluent_kafka import Producer
 
-
 class KafkaProducer(Producer):
     def __init__(self, config: dict, path: str = "./data/bovespa-stock-market-kaggle.csv"):
         super().__init__(config)
@@ -20,7 +19,7 @@ class KafkaProducer(Producer):
     def sort_dataframe_by_date(self, df):
         return df.sort_values(by=['Date'], ascending=True)
 
-    def send_message_to_kafka(self, topic: str = "br-stock-trades"):
+    def send_message_to_kafka(self, topic: str = "brstocktrades"):
         df = self.read_data()
         df = self.convert_date_column(df)
         df = self.sort_dataframe_by_date(df)

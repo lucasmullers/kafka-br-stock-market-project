@@ -1,9 +1,11 @@
 echo "Waiting for Kafka to come online..."
 
-cub kafka-ready -b kafka://broker:29092 1 20
+sleep 60
+
+cub kafka-ready -b kafka://broker:29092 1 60
 
 echo "Deleting topics to reset messages on startup..."
-for topic in br-stock-trades transactions; do
+for topic in brstocktrades transactions; do
   kafka-topics \
     --bootstrap-server kafka://broker:29092 \
     --delete \
@@ -12,12 +14,12 @@ done
 
 echo "Creating topic..."
 
-for topic in br-stock-trades transactions; do
+for topic in brstocktrades transactions; do
   kafka-topics \
     --bootstrap-server kafka://broker:29092 \
     --topic $topic \
-    --replication-factor 1 \
-    --partitions 6 \
+    --replication-factor 3 \
+    --partitions 2 \
     --create
     echo "$topic topic created."
 done

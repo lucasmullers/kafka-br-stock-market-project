@@ -3,7 +3,7 @@ from utils.kafka_producer import KafkaProducer
 
 
 if __name__ == "__main__":
-    sleep(30)
+    sleep(120)
 
     kafka_producer = KafkaProducer(config={"bootstrap.servers": "broker:29092"})
 

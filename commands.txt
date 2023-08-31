@@ -1,0 +1,9 @@
+docker compose exec broker bash
+
+kafka-topics --bootstrap-server broker:29092 --describe --topic "brstocktrades"
+
+kafka-topics --bootstrap-server broker:29092 --topic first_topic --create --partitions 3 --replication-factor 1
+
+kafka-console-consumer --bootstrap-server broker:29092 --topic first_topic
+
+kafka-console-producer --bootstrap-server broker:29092 --topic first_topic
